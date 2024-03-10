@@ -27,7 +27,7 @@
 	transition:slide|local={{ duration: 200 }}
 >
 	{#if title || message}
-		<div class={twMerge('alert-message', klass?.message)}>
+		<div class={twMerge('alert-message mr-5', klass?.message)}>
 			{#if title}
 				<h3 class="h3">{title}</h3>
 			{/if}

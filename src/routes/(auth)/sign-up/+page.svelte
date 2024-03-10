@@ -50,7 +50,7 @@
 			alertQueue.append({
 				title: 'Success',
 				message: 'Sign Up successfull. Please login',
-				variant: defaultClasses.success.filled
+				variant: defaultClasses.secondary.filled
 			});
 			goto('/login', { replaceState: true });
 		}

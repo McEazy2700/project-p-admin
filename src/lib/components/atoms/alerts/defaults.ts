@@ -5,6 +5,12 @@ export const defaultClasses = {
 		soft: 'variant-soft-error',
 		ringed: 'variant-ringed-error'
 	},
+	secondary: {
+		filled: 'variant-filled-secondary',
+		ghost: 'variant-ghost-secondary',
+		soft: 'variant-soft-secondary',
+		ringed: 'variant-ringed-secondary'
+	},
 	success: {
 		filled: 'variant-filled-success',
 		ghost: 'variant-ghost-success',

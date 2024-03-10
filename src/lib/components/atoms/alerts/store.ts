@@ -14,7 +14,8 @@ const append = (val: Omit<AlertProps, 'id'>) => {
           variant: 'icon',
           icon: 'material-symbols-light:close-small-rounded',
           action: () => remove(curr.length + 1)
-        }
+        },
+        ...(val.actions ?? [])
       ]
     }
   ]);

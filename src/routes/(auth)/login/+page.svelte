@@ -7,7 +7,7 @@
 		EmailPasswordLoginMutationVariables
 	} from '$lib/graphql/generated';
 	import { EMAIN_PASSWORD_LOGIN } from '$lib/graphql/mutations/auth';
-	import { setAuthTokens } from '$lib/utils/auth';
+	import { clearAuthTokens, setAuthTokens } from '$lib/utils/auth';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { getContextClient, mutationStore, type OperationResultStore } from '@urql/svelte';
 
@@ -19,6 +19,7 @@
 	let result: OperationResultStore<EmailPasswordLoginMutation, EmailPasswordLoginMutationVariables>;
 
 	const handleLogin = () => {
+		clearAuthTokens();
 		result = mutationStore<EmailPasswordLoginMutation, EmailPasswordLoginMutationVariables>({
 			client,
 			query: EMAIN_PASSWORD_LOGIN,
@@ -48,7 +49,7 @@
 			alertQueue.append({
 				title: 'Success',
 				message: `Welcome Back`,
-				variant: defaultClasses.success.filled
+				variant: defaultClasses.secondary.filled
 			});
 			goto('/', { replaceState: true });
 		}

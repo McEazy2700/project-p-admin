@@ -29,8 +29,14 @@ export type EmailPasswordRegisterInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createStore: StoreType;
   emailPasswordLogin: AuthTokenType;
   emailPasswordRegister: UserType;
+};
+
+
+export type MutationCreateStoreArgs = {
+  input: StoreInput;
 };
 
 
@@ -44,15 +50,51 @@ export type MutationEmailPasswordRegisterArgs = {
   input: EmailPasswordRegisterInput;
 };
 
+export type PaginatedStoreFilter = {
+  filter?: InputMaybe<StoreFilter>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   me?: Maybe<UserType>;
+  stores: Array<StoreType>;
   version: Scalars['String']['output'];
+};
+
+
+export type QueryStoresArgs = {
+  opts?: InputMaybe<PaginatedStoreFilter>;
+};
+
+export type StoreFilter = {
+  creatorId?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoreInput = {
+  creatorId?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoreType = {
+  __typename?: 'StoreType';
+  creator: UserType;
+  dateAdded: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type UserType = {
   __typename?: 'UserType';
+  dateAdded: Scalars['String']['output'];
   email: Scalars['String']['output'];
+  id: Scalars['String']['output'];
 };
 
 export type EmailPasswordRegisterMutationVariables = Exact<{
@@ -69,3 +111,15 @@ export type EmailPasswordLoginMutationVariables = Exact<{
 
 
 export type EmailPasswordLoginMutation = { __typename?: 'Mutation', emailPasswordLogin: { __typename?: 'AuthTokenType', token: string, refreshToken: string, user: { __typename?: 'UserType', email: string } } };
+
+export type StoresQueryVariables = Exact<{
+  opts?: InputMaybe<PaginatedStoreFilter>;
+}>;
+
+
+export type StoresQuery = { __typename?: 'Query', stores: Array<{ __typename?: 'StoreType', dateAdded: string, description?: string | null, id: string, name: string, creator: { __typename?: 'UserType', dateAdded: string, email: string, id: string } }> };
+
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'UserType', dateAdded: string, email: string, id: string } | null };

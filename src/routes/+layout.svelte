@@ -26,6 +26,8 @@
 </script>
 
 <UrqlClient>
-	<slot />
+	<div class="bg-surface-50">
+		<slot />
+	</div>
 	<AlertQueue />
 </UrqlClient>

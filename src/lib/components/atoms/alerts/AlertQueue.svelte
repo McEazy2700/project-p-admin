@@ -2,10 +2,6 @@
 	import { slide } from 'svelte/transition';
 	import Alert from './Alert.svelte';
 	import alertQueue from './store';
-
-	$: {
-		console.log($alertQueue);
-	}
 </script>
 
 {#if $alertQueue.length > 0}
